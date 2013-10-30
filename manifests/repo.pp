@@ -9,7 +9,7 @@ class openstack::repo(
     'havana', 'grizzly': {
       if $::operatingsystem == 'Fedora' {
         notify { "not adding repository for fedora, relying on default repo's": }
-      } elseif $::osfamily == 'RedHat' {
+      } elsif $::osfamily == 'RedHat' {
         class {'openstack::repo::rdo': release => $release }
       } elsif $::operatingsystem == 'Ubuntu' {
         class {'openstack::repo::uca': release => $release }
